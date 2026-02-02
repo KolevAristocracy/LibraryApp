@@ -28,6 +28,6 @@ jobs:
     - name: Start server and Run Tests
       run: 
         npm run server &
-        npx wait-on http://localhost:3000
+        npx -y wait-on http://localhost:3030
         npm test
 
