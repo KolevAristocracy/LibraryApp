@@ -27,7 +27,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Start server and tests
-      run:
+      run: |
         npm run start &
         npm run server &
         npx -y wait-on tcp:localhost:3000 tcp:localhost:3030
