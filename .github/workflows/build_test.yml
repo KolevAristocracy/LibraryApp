@@ -19,15 +19,12 @@ jobs:
         node-version: 20
         cache: 'npm'
         
-    - name: Install dependencies
-      run: npm install
+    # - name: Install dependencies
+    #   run: npm install
       
     - name: Install playwright browsers
       run: npx playwright install
       
-    - name: Start server and Run Tests
-      run: 
-        npm run server &
-        npx -y wait-on tcp:3030
-        npm test
+    - name: Run Tests
+      run: npm test
 
