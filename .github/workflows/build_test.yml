@@ -26,11 +26,14 @@ jobs:
     - name: Install playwright browsers
       run: npx playwright install --with-deps
 
-    # - name: Run Playwright tests
-    #   run: npx playwright test
+    - name: Start server and tests
+      run:
+        # Start the Backend (API) in the background
+        npm run server &
 
-    - name: Start server and test
-      # Fixes the stuck server issue (from previous conversation)
-      run: npx start-server-and-test 'npm run server' tcp:3030 'npx playwright test'
+        npm run start &
+        npx wait-on tcp:3030 tcp:3000
+        npx playwright test
+        
 
 
