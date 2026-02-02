@@ -32,7 +32,7 @@ jobs:
         npm run server &
 
         npm run start &
-        npx wait-on tcp:3030 tcp:3000
+        npx -y wait-on tcp:3030 tcp:3000
         npx playwright test
         
 
