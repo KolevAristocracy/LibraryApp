@@ -9,7 +9,7 @@ on:
 jobs:
   build_and_test:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout the code
       uses: actions/checkout@v4
@@ -26,7 +26,11 @@ jobs:
     - name: Install playwright browsers
       run: npx playwright install --with-deps
 
-    - name: Run Playwright tests
-      run: npx playwright test
+    # - name: Run Playwright tests
+    #   run: npx playwright test
+
+    - name: Start server and test
+      # Fixes the stuck server issue (from previous conversation)
+      run: npx start-server-and-test 'npm run server' tcp:3030 'npx playwright test'
 
 
