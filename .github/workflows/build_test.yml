@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build_and_test:
+  build:
 
     runs-on: ubuntu-latest
     steps:
@@ -25,6 +25,10 @@ jobs:
     - name: Install playwright browsers
       run: npx playwright install
       
-    - name: Run Tests
-      run: npm test
+  run_tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run tests
+      run: npm run test
 
