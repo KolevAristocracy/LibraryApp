@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_and_test:
 
     runs-on: ubuntu-latest
     steps:
@@ -24,10 +24,9 @@ jobs:
       run: npm install
       
     - name: Install playwright browsers
-      run: npx playwright install
+      run: npx playwright install --with-deps
 
-    - name: Start server, wait, and test
-      run:
-        npx start-server-and-test 'npm run server' tcp:3030 'npm test'
+    - name: Run Playwright tests
+      run: npx playwright test
 
 
