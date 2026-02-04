@@ -22,6 +22,9 @@ jobs:
         
     - name: Install dependencies
       run: npm install
+
+    - name: Manually change the config file
+      run: echo "export const settings = {host:\"http://localhost:3030\"};" > src/config.js
       
     - name: Install playwright browsers
       run: npx playwright install
