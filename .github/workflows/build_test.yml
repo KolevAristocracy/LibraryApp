@@ -32,7 +32,7 @@ jobs:
     - name: Start the FrontEnd
       run: npm run start-fe &
     
-    - name: Install Playwright Browsers
+    - name: Run tests
       run: npm run test
 
         
